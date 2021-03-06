@@ -1,0 +1,39 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+{% load static %}
+
+<h1 class="text-primary">Hello Django</h1>
+
+<div class="container text-center">
+    <span>Img</span>
+    <img src="{% static 'portfolio/test.png' %}" alt="">
+
+
+</div>
+
+<div class="container">
+
+    <div class="row col-12 m-0 px-0">
+
+        <div class="col-4">
+            {% for project in projects %}
+
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ project.image.url }}" class="card-img-top" style="height: 200px" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ project.title }}</h5>
+                        <p class="card-text">{{ project.description }}</p>
+                        {% if project.url %}
+                            <a href="{{ project.url }}" class="btn btn-primary">more</a>
+                        {% endif %}
+                    </div>
+                </div>
+
+
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
